@@ -1,41 +1,67 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import config from './config.js';
+import { View, StatusBar, Text } from 'react-native';
+import Styles from './styles';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import AgroPatternsReducer, {initialState} from './reducers'
+import Permissions from 'react-native-permissions';
 
-type Props = {};
-export default class App extends Component<Props> {
+//redux
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import Meteor, { createContainer } from 'react-native-meteor';
+import thunk from 'redux-thunk';
+import { connect } from 'react-redux'
+import Actions from './actions/index.js'
+
+import LoggedIn from './layouts/LoggedIn.js';
+
+Meteor.connect(config.url);
+let store = createStore(AgroPatternsReducer,  applyMiddleware(thunk))
+
+class AgroPatterns extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+    return(
+      <Provider store={store}>
+        <AgroPatternsRedux {...this.props} />
+      </Provider>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default createContainer(params=>{
+  let status = Meteor.status();
+  return { connected: status.connected };
+}, AgroPatterns)
+
+class AgroPatternsView extends Component {
+  constructor(props) {
+    super(props)
+    props.init();
+  }
+  componentDidMount() {
+    Permissions.request('location', 'always');
+  }
+  render() {
+    return(
+      <View>
+        <LoggedIn />
+      </View>
+    )
+  }
+};
+
+const mapStateToProps = (state) => {
+  let groupId;
+  if (state.configs) groupId = state.configs.groupId;
+  return { groupId }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return { init: () => { dispatch(Actions.init()) }}
+}
+
+const AgroPatternsRedux = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AgroPatternsView)

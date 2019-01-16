@@ -7,10 +7,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "immutability-helper": "^2.9.0",
     "moment": "^2.23.0",
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-native-material-kit": "^0.5.1",
     "react-native-meteor": "^1.4.0",
+    "react-native-permissions": "^1.1.1",
+    "react-redux": "^6.0.0",
     "realm": "^2.21.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
@@ -19,7 +23,8 @@
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.50.0",
-    "react-test-renderer": "16.6.1"
+    "react-test-renderer": "16.6.1",
+    "redux-devtools": "^3.5.0"
   },
   "jest": {
     "preset": "react-native"
