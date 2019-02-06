@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 let window = Dimensions.get('window')
+
 const COLORS = {
   background: '#4B5445',
   highlight: '#FFFBCC',
@@ -18,7 +19,10 @@ const COLORS = {
 let Styles = {COLORS,
   container: {
     flex: 1,
-    backgroundColor: COLORS.background
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    backgroundColor: COLORS.background,
   },
   centeredContainer: {
     flex: 1,
@@ -31,62 +35,16 @@ let Styles = {COLORS,
 
 
 Styles.home = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLORS.background,
+    main: {
+      width: 50,
+      height: 50,
+      backgroundColor: 'powderblue'
   },
-  innerContainer: {
-    marginLeft: 30,
-    marginRight: 30,
-    marginTop: 30,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  label: {
-    color: COLORS.headerText,
-    fontSize: 26
-  },
-  nameText: {
-    fontSize: 26,
-    textAlign: 'center',
-    color: COLORS.headerText,
-    fontWeight: 'bold',
-    marginBottom: 40,
-  },
-  statusTitle: {
-    fontSize: 26,
-    textAlign: 'center',
-    color: COLORS.headerText,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  statusText: {
-    fontSize: 24,
-    textAlign: 'center',
-    color: COLORS.highlight,
-    fontWeight: '400',
-    marginBottom: 20,
-  },
-  statusTextSmall: {
-    fontSize: 14,
-    textAlign: 'center',
-    color: COLORS.highlight,
-    fontWeight: '400',
-    marginBottom: 15,
-  },
-  logo: {
-    width: 200,
-    height: 200,
-    tintColor: COLORS.mainLighten,
-    marginBottom: 50
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    margin: 30,
-    marginTop: 10
-  }
+    menu: {
+      height: 100,
+      backgroundColor: 'steelblue'
+    }
+
 });
 
 export default Styles;

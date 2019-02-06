@@ -13,11 +13,14 @@ class Home extends Component {
   }
   render() {
     return (
-      <View>
-        <View>
-          <Text >Hola Mundo</Text>
+        <View style={Styles.container}>
+          <View style={Styles.home.main}>
+
+          </View>
+          <View style={Styles.home.menu} >
+              
+          </View>
         </View>
-      </View>
     );
   }
 }
