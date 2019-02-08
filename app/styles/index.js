@@ -22,12 +22,13 @@ let Styles = {COLORS,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'stretch',
+    width: window.width,
+    height: window.height,
     backgroundColor: COLORS.background,
   },
   centeredContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+
     backgroundColor: COLORS.background
   }
 };
@@ -36,13 +37,14 @@ let Styles = {COLORS,
 
 Styles.home = StyleSheet.create({
     main: {
-      width: 50,
-      height: 50,
-      backgroundColor: 'powderblue'
-  },
+        width: 'auto',
+        height:  window.height * 1.9,
+        backgroundColor: 'powderblue'
+    },
     menu: {
-      height: 100,
-      backgroundColor: 'steelblue'
+        width: 'auto',
+        height: 100,
+        backgroundColor: 'steelblue',
     }
 
 });

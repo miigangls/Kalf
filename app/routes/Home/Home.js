@@ -15,10 +15,10 @@ class Home extends Component {
     return (
         <View style={Styles.container}>
           <View style={Styles.home.main}>
-
+              <Text> Opcion uno</Text>
           </View>
           <View style={Styles.home.menu} >
-              
+              <Text> Opcion Dos</Text>
           </View>
         </View>
     );
