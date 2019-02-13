@@ -18,7 +18,18 @@ class Home extends Component {
               <Text> Opcion uno</Text>
           </View>
           <View style={Styles.home.menu} >
-              <Text> Opcion Dos</Text>
+            <TouchableHighlight style={Styles.home.button} >
+              <Text> Touch Here 1</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={Styles.home.button} >
+              <Text> Touch Here 2</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={Styles.home.button} >
+              <Text> Touch Here 3</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={Styles.home.button} >
+              <Text> Touch Here 4</Text>
+            </TouchableHighlight>
           </View>
         </View>
     );
