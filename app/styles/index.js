@@ -3,15 +3,9 @@ import { StyleSheet, Dimensions } from 'react-native';
 let window = Dimensions.get('window')
 
 const COLORS = {
-  background: '#4B5445',
-  highlight: '#FFFBCC',
-  mainLighten: '#e6ece5', //#CAD3C4
-  errorText: '#FA3256',
-  headerText: '#e6ece5',
-  buttonBackground: '#e6ece5',
-  buttonText: '#4B5445',
-  inputBackground: '#e6ece5',
-  inputDivider: '#4B5445',
+  PrimaryColor: '#FFF',
+  SecondaryColor:'#cccccc',
+  TertiaryColor:'#858585',
   disabled: 'grey',
   green: 'green'
 };
@@ -24,12 +18,12 @@ let Styles = {COLORS,
     alignItems: 'stretch',
     width: window.width,
     height: window.height,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.PrimaryColor,
   },
   centeredContainer: {
     flex: 1,
 
-    backgroundColor: COLORS.background
+    backgroundColor: COLORS.PrimaryColor
   }
 };
 
@@ -39,12 +33,20 @@ Styles.home = StyleSheet.create({
     main: {
         width: 'auto',
         height:  window.height * 1.9,
-        backgroundColor: 'powderblue'
+        backgroundColor: COLORS.PrimaryColor
     },
     menu: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'stretch',
         width: 'auto',
-        height: 100,
-        backgroundColor: 'steelblue',
+        height: 120,
+        backgroundColor: COLORS.SecondaryColor,
+    },
+    button: {
+      alignItems: 'center',
+      backgroundColor: '#DDDDDD',
+      padding: 10
     }
 
 });
