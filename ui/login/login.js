@@ -24,14 +24,14 @@ export default class Login extends React.Component  {
                 </View>
 
                 <Email style={Styles.signIn.Input} placeholder="Email" getInput={(value, valid) => this.getField('email', value, valid)}/>
-                <Password style={Styles.signIn.Input} placeholder="Contraseña" getInput={(value, valid) => this.getField('password', value, valid)} />
+                <Password style={Styles.signIn.Input} placeholder="Password" getInput={(value, valid) => this.getField('password', value, valid)} />
 
                 <Button style={Styles.signIn.btnLoginIngresar}>
                   <Text>INGRESAR</Text>
                 </Button>
 
                 <TouchableHighlight style={Styles.signIn.btnLoginRegistrar}>
-                  <Text style={{color:"#FFF"}}>REGISTRAR</Text>
+                  <Text style={{color:"#FFF"}}>Registrar</Text>
                 </TouchableHighlight>
               </Form>
 
