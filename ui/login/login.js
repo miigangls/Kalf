@@ -5,8 +5,9 @@ import { Container, Content,
   Button, Text, Thumbnail,
   Form, Item, Input, Label, Spinner } from 'native-base';
 
-  import Styles from '../../styles';
-
+import Styles from '../../styles';
+import Email from '../components/email';
+import Password from '../components/password';
 
 export default class Login extends React.Component  {
   state = {formValid: false}
@@ -21,6 +22,10 @@ export default class Login extends React.Component  {
                 <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1}}>
                     <Text style={Styles.signIn.LogoText}>KALF</Text>
                 </View>
+
+                <Email style={Styles.signIn.Input} placeholder="Email" getInput={(value, valid) => this.getField('email', value, valid)}/>
+                <Password style={Styles.signIn.Input} placeholder="Contraseña" getInput={(value, valid) => this.getField('password', value, valid)} />
+
                 <Button style={Styles.signIn.btnLoginIngresar}>
                   <Text>INGRESAR</Text>
                 </Button>
@@ -35,5 +40,11 @@ export default class Login extends React.Component  {
         </Content>
       </Container>
     )
+  }
+  getField(field, value, valid) {
+    this.setState({[field]: value, [field+"Valid"]: valid}, () => {
+      let {emailValid, passwordValid} = this.state;
+      this.setState({formValid: emailValid && passwordValid})
+    })
   }
 }
