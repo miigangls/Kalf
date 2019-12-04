@@ -3,14 +3,15 @@ import KeepAwake from 'expo-keep-awake';
 import {AppState,  View } from 'react-native';
 import { Container, Content, Header, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
 import Login from './login'
+import Register from './register'
 
 export default class Main extends React.Component  {
   state = {loading: true}
   constructor(props) {
     super()
     AppState.addEventListener('change', this._handleAppStateChange);
-    this.route = { //speed switch
-      'login': Login ,
+    this.router = { //speed switch
+      'login': Login
     }
     props.appStartUp(() => this.setState({loading: false}))
   }
@@ -22,12 +23,14 @@ export default class Main extends React.Component  {
    else if (nextAppState == 'active') this.props.appRestart()
  }
   render() {
-   if (!this.props.user.name) return <Login />
+   if (this.props.router == 'register') return <Register />
+   if (!this.props.user.name && !this.props.router) return <Login />
    return this.getRoute()
   }
   getRoute() {
-    if (this.route[this.props.route]) {
-      const TagName = this.route[this.props.route];
+    console.log(this.props.router);
+    if (this.router[this.props.router]) {
+      const TagName = this.router[this.props.router];
       return <TagName />
     }
     return this.getHome()

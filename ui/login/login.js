@@ -30,7 +30,7 @@ export default class Login extends React.Component  {
                   <Text>INGRESAR</Text>
                 </Button>
 
-                <TouchableHighlight style={Styles.signIn.btnLoginRegistrar}>
+                <TouchableHighlight style={Styles.signIn.btnLoginRegistrar} onPress={this.props.linkRegister}>
                   <Text style={{color:"#FFF"}}>Registrar</Text>
                 </TouchableHighlight>
               </Form>

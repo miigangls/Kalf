@@ -3,18 +3,12 @@ import { Item, Label, Input } from 'native-base';
 const re = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
 
 export default class AppInput extends React.Component {
-  constructor(props) {
-    super()
-    this.state = {
-      value: (props.value).toString()
-    }
-  }
+  state = { value: '' }
   render() {
     let { value } = this.state, {error, success} = this.props;
     return (
         <Input
           style={this.props.style}
-          keyboardType='numeric'
           onChangeText={this.setValue}
           value={value}
           autoCapitalize='none'
