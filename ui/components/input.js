@@ -22,6 +22,6 @@ export default class AppInput extends React.Component {
     let valid = value && re.test(value)
     , error = !valid, success = !!valid;
     this.setState({value, error, success})
-    if (!isNaN(value)) this.props.updateValue(this.props.location, parseInt(value))
+    this.props.getInput(value, valid)
   }
 }
