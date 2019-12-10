@@ -14,6 +14,7 @@ export default class Register extends React.Component  {
   state = {formValid: false}
   render() {
     let {formValid} = this.state;
+
     return (
       <Container>
         <Content style={{display: 'flex', backgroundColor:'#15243E'}}>
@@ -31,7 +32,7 @@ export default class Register extends React.Component  {
                 <Email style={Styles.register.Input} placeholder="Email" getInput={(value, valid) => this.getField('email', value, valid)}/>
                 <Password style={Styles.register.Input} placeholder="Password" getInput={(value, valid) => this.getField('password', value, valid)} />
 
-                <Button style={Styles.signIn.btnLoginIngresar}>
+                <Button style={Styles.signIn.btnLoginIngresar} onPress={() => this.props.registrar(this.state)}>
                   <Text>ACEPTAR</Text>
                 </Button>
 

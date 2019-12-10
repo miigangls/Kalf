@@ -6,6 +6,7 @@ export function appStartUp(callback) {
     Promise.all([
       buildDirs(), //prevents no dir error
       SecureStore.getItemAsync('user_data'),
+      SecureStore.getItemAsync('profile_data'),
       readFile('configuration', 'users'),
     ]).then(async (values) => {
       //let [NaV, user] = values

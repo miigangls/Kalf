@@ -1,6 +1,6 @@
 import Register from './register'
 import { connect } from 'react-redux'
-
+import { registrar } from '../../actions/register'
 
 const mapStateToProps = (state) => {
   console.log(state);
@@ -8,7 +8,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {  }
+  return {
+    registrar: (data) => dispatch(registrar(data))
+  }
 }
 
 export default connect(

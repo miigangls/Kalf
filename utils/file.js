@@ -1,7 +1,7 @@
 import * as FileSystem from 'expo-file-system'
 
 const allowedDirectory = [
-  'user',
+  'configuration'
 ]
 
 export async function buildDirs() {
