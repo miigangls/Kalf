@@ -2,18 +2,7 @@
 
 export function login(email, password) {
   return (dispatch) => {
-    dispatch({ type: 'CONFIGURATION-USER-LOADING', loading: true })
-
-    /*fetchLogin(email, password).then(userData => {
-      let user = {
-        userId: userData._id,
-        name: userData.profile.username,
-        language: userData.profile.language,
-        passhex: userData.passhex
-      }*/
-      SecureStore.setItemAsync('user', JSON.stringify(user))
-      dispatch({ type: 'CONFIGURATION-USER-SET', user })
-      dispatch({type: 'CONFIGURATION-NOT_READY'})
+    
   };
 }
 

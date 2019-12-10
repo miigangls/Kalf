@@ -1,5 +1,4 @@
-const router= (state = {name: 'register', options: {}}, action) => {
-  console.log(action.route);
+const router= (state = {name: '', options: {}}, action) => {
   switch (action.type) {
     case 'ROUTE-UPDATE': return { name: action.route, options: action.options || {} }
     default: return state
