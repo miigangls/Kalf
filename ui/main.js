@@ -11,7 +11,7 @@ export default class Main extends React.Component  {
     super()
     AppState.addEventListener('change', this._handleAppStateChange);
     this.router = { //speed switch
-      'login': Login
+      'register' : Register
     }
     props.appStartUp(() => this.setState({loading: false}))
   }
@@ -23,12 +23,11 @@ export default class Main extends React.Component  {
    else if (nextAppState == 'active') this.props.appRestart()
  }
   render() {
-   if (this.props.router == 'register') return <Register />
    if (!this.props.user.name && !this.props.router) return <Login />
    return this.getRoute()
   }
   getRoute() {
-    console.log(this.props.router);
+
     if (this.router[this.props.router]) {
       const TagName = this.router[this.props.router];
       return <TagName />
