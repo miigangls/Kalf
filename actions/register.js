@@ -1,12 +1,13 @@
 import {saveFile} from '../utils/file';
 import * as SecureStore from 'expo-secure-store';
 import {route } from './route'
-
+import {makeid } from '../utils/ui';
 
 export function registrar(userData) {
   return  async (dispatch) => {
     await  dispatch({ type: 'CONFIGURATION-PROFILE-LOADING', loading: true })
     let user = {
+      _id: makeid(50),
       name: userData.name,
       last_name: userData.last_name,
       password: userData.password,
