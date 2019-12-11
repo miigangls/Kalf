@@ -1,8 +1,21 @@
-
+import * as SecureStore from 'expo-secure-store';
+import { Alert } from 'react-native';
+import {makeid } from '../utils/ui';
+import {saveFile} from '../utils/file';
+import {route } from './route'
 
 export function login(email, password) {
-  return (dispatch) => {
-    
+  return async (dispatch) => {
+    let profile = JSON.parse(await SecureStore.getItemAsync('profile_data'))
+    if (email != profile.email && password != profile.password ) return Alert.alert('Error al Ingresar', 'El email o contraseña son incorrectos.')
+      let user = {
+        userId: makeid(50),
+        email,
+        password
+      }
+      await saveFile('configuration', 'user', user)
+      SecureStore.setItemAsync('user_data', JSON.stringify(user))
+      await dispatch(route('dashbord'))
   };
 }
 
