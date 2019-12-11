@@ -26,7 +26,7 @@ export default class Login extends React.Component  {
                 <Email style={Styles.signIn.Input} placeholder="Email" getInput={(value, valid) => this.getField('email', value, valid)}/>
                 <Password style={Styles.signIn.Input} placeholder="Password" getInput={(value, valid) => this.getField('password', value, valid)} />
 
-                <Button style={Styles.signIn.btnLoginIngresar}>
+                <Button style={Styles.signIn.btnLoginIngresar} onPress={() => this.props.login(this.state.email, this.state.password)}>
                   <Text>INGRESAR</Text>
                 </Button>
 
