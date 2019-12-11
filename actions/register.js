@@ -1,18 +1,20 @@
 import {saveFile} from '../utils/file';
 import * as SecureStore from 'expo-secure-store';
+import {route } from './route'
+
 
 export function registrar(userData) {
   return  async (dispatch) => {
     await  dispatch({ type: 'CONFIGURATION-PROFILE-LOADING', loading: true })
-
     let user = {
       name: userData.name,
       last_name: userData.last_name,
       password: userData.password,
       email: userData.email,
     }
-    await saveFile('configuration', 'profile', {user})
+    await saveFile('configuration', 'profile', user)
     SecureStore.setItemAsync('profile_data', JSON.stringify(user))
-    await dispatch({ type: 'CONFIGURATION-USER-SET', user })
+    await dispatch({ type: 'CONFIGURATION-PROFILE-SET', user })
+    await dispatch(route(''))
   };
 }

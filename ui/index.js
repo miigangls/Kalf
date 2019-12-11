@@ -5,10 +5,11 @@ import { appStartUp , appShutDown, appRestart} from '../actions/app'
 
 
 const mapStateToProps = (state) => {
-  let {user, router, ready} = state
+  let {profile,user, router, ready} = state
   return {
-    user,
+    profile,
     ready,
+    user,
     router:router.name
   }
 }
