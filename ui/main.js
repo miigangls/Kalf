@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import KeepAwake from 'expo-keep-awake';
 import {AppState,  View } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
+import { Container, Content, Footer, FooterTab, Header, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
+
+import Styles from '../styles'
 import Login from './login'
 import Register from './register'
 
@@ -37,15 +38,35 @@ export default class Main extends React.Component  {
   getHome() {
     return (
       <Container>
-        <KeepAwake />
-        <Header>
+        <Header style={Styles.main.header}>
           <Left/>
-          <Body>
+          <Body style={Styles.main.headerBody}>
             <Title>KALF</Title>
           </Body>
+          <Right>
+            <Button vertical>
+              <Icon type="FontAwesome5" name="bars" />
+            </Button>
+          </Right>
         </Header>
         <Content contentContainerStyle={{display: 'flex', flex: 1}}>
         </Content>
+        <Footer >
+          <FooterTab style={Styles.main.footer}>
+           <Button vertical>
+             <Icon type="FontAwesome5" name="money-check-alt" />
+             <Text>Gatos</Text>
+           </Button>
+           <Button vertical>
+             <Icon type="FontAwesome5" name="home" />
+             <Text>Inicio</Text>
+           </Button>
+           <Button vertical>
+             <Icon type="FontAwesome5" name="money-check" />
+             <Text>Ingresos</Text>
+           </Button>
+         </FooterTab>
+       </Footer>
       </Container>
     );
   }
