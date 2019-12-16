@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {AppState,  View } from 'react-native';
-import { Container, Content, Footer, FooterTab, Header, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
+import { Container, Content,Header, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
 
 import Styles from '../styles'
 import Login from './login'
 import Register from './register'
+import Income from './income'
+import Expenses from './expenses'
+import Footer from './reusables/footer'
 
 export default class Main extends React.Component  {
   state = {loading: true}
@@ -12,7 +15,9 @@ export default class Main extends React.Component  {
     super()
     AppState.addEventListener('change', this._handleAppStateChange);
     this.router = { //speed switch
-      'register' : Register
+      'register' : Register,
+      'income': Income,
+      'expenses': Expenses
     }
     props.appStartUp(() => this.setState({loading: false}))
   }
@@ -51,22 +56,7 @@ export default class Main extends React.Component  {
         </Header>
         <Content contentContainerStyle={{display: 'flex', flex: 1}}>
         </Content>
-        <Footer >
-          <FooterTab style={Styles.main.footer}>
-           <Button vertical>
-             <Icon type="FontAwesome5" name="money-check-alt" />
-             <Text>Gatos</Text>
-           </Button>
-           <Button vertical>
-             <Icon type="FontAwesome5" name="home" />
-             <Text>Inicio</Text>
-           </Button>
-           <Button vertical>
-             <Icon type="FontAwesome5" name="money-check" />
-             <Text>Ingresos</Text>
-           </Button>
-         </FooterTab>
-       </Footer>
+        <Footer />
       </Container>
     );
   }

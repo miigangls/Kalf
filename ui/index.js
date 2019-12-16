@@ -1,6 +1,6 @@
 import Main from './main'
 import { connect } from 'react-redux'
-
+import {route} from '../actions/route'
 import { appStartUp , appShutDown, appRestart} from '../actions/app'
 
 
@@ -19,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
     appStartUp: (callback) => dispatch(appStartUp(callback)),
     appShutDown: () => dispatch(appShutDown()),
     appRestart: () => dispatch(appRestart()),
+    home:() => dispatch(route('dashbord')),
+    expense:() => dispatch(route('expenses')),
+    income:() => dispatch(route('income')),
   }
 }
 
