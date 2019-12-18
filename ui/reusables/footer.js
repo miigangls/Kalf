@@ -1,10 +1,10 @@
 import React from 'react';
-import { Footer, FooterTab,Icon} from 'native-base';
+import { Footer, FooterTab,Icon, Button, Text} from 'native-base';
 import { connect } from 'react-redux'
 import Styles from '../../styles';
+import {route} from '../../actions/route'
 
 class MainFooter extends React.Component {
-  state = { value: '' }
   render() {
     return (
       <Footer >
@@ -26,7 +26,6 @@ class MainFooter extends React.Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {  }

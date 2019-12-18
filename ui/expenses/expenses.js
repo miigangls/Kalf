@@ -3,10 +3,10 @@ import {AppState,  View, TouchableHighlight } from 'react-native';
 import { Container, Content,
   Header, Left, Body, Right, Title,
   Button, Text, Thumbnail,
-  Form, Item, Input, Label, Spinner } from 'native-base';
+  Form, Item, Input, Label,Icon,  Spinner } from 'native-base';
 
 import Styles from '../../styles';
-import Footer from './reusables/footer'
+import Footer from '../reusables/footer'
 
 export default class Login extends React.Component  {
   state = {formValid: false}
@@ -25,7 +25,7 @@ export default class Login extends React.Component  {
           </Button>
         </Right>
       </Header>
-        <Content style={{display: 'flex', backgroundColor:'#15243E'}}>
+        <Content style={{display: 'flex'}}>
           {this.props.loading ? <Spinner /> :
             <View>
             </View>

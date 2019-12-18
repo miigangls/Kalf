@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { registrar } from '../../actions/register'
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {  }
 }
 
