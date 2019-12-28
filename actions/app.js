@@ -5,12 +5,17 @@ export function appStartUp(callback) {
   return dispatch => {
     Promise.all([
       buildDirs(), //prevents no dir error
-      SecureStore.getItemAsync('profile_data')
+      SecureStore.getItemAsync('profile_data'),
+      SecureStore.getItemAsync('user')
     ]).then(async (values) => {
-      let [NaV,profile ] = values
+      let [NaV,profile, user ] = values
       if (profile) {
         profile = JSON.parse(profile)
         await dispatch({ type: 'CONFIGURATION-PROFILE-SET', profile })
+      }
+      if (user) {
+        user = JSON.parse(user)
+        await dispatch({ type: 'CONFIGURATION-USER-SET', user })
       }
 
       dispatch({type: 'CONFIGURATION-READY'})
