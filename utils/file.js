@@ -1,14 +1,16 @@
 import * as FileSystem from 'expo-file-system'
 
 const allowedDirectory = [
-  'configuration'
+  'configuration',
+  'expenses',
+  'income'
 ]
 
 export async function buildDirs() {
   await allowedDirectory.forEach(async (dir) => {
     try {
       await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory+dir)
-    } catch (e) {/* NOOP */}
+    } catch (e) {}
   })
 }
 
