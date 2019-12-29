@@ -38,8 +38,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => dispatch(login(email, password)),
-  linkRegister: () => dispatch(route('register'))
+  routeFrom:() => dispatch(route('expense-from'))
 })
 
 export default connect(

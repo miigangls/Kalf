@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {AppState,  View, TouchableHighlight } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem, Fab } from 'native-base';
+import {AppState,  View, TouchableHighlight, Modal, Alert } from 'react-native';
+import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
 
 import Styles from '../../styles';
 import Footer from '../reusables/footer'
-
+import ExpensesForm from './form'
 export default class Expenses extends React.Component  {
-  state = {  active: false };
+  state = { modalVisible: false,};
  render() {
    let {expensesByUser:[]} = this.props
     return (
@@ -57,12 +57,39 @@ export default class Expenses extends React.Component  {
             </CardItem>
           })
         }
+        <Modal
+           animationType="slide"
+           transparent={false}
+           visible={this.state.modalVisible}
+           style={{height: 100}}
+           onRequestClose={() => {
+             Alert.alert('Modal has been closed.');
+           }}>
+           <Container>
+           <Header style={Styles.main.header}>
+             <Left>
+               <Button vertical  onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+                 <Icon type="FontAwesome5" name="arrow-left" />
+               </Button>
+             </Left>
+             <Body style={Styles.main.headerBody}>
+               <Title>KALF</Title>
+             </Body>
+             <Right/>
+           </Header>
+             <ExpensesForm style={{marginTop: 22}}/>
+           </Container>
+         </Modal>
       </Content>
-       <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#F35A81',position: 'absolute',bottom: 70,right: 20}}  onPress={() => alert("This is Card Header")}>
+       <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#F35A81',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.setModalVisible(true)}}>
          <Icon type="FontAwesome5" name="plus" />
        </Button>
-      <Footer />
+
+       <Footer />
       </Container>
     )
+  }
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
   }
 }
