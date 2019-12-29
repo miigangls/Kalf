@@ -8,6 +8,7 @@ import Footer from '../reusables/footer'
 export default class Expenses extends React.Component  {
   state = {  active: false };
  render() {
+   let {expensesByUser:[]} = this.props
     return (
       <Container>
       <Header style={Styles.main.header}>
@@ -28,7 +29,7 @@ export default class Expenses extends React.Component  {
           TOTAL DE GASTOS
           </Text>
           <Text style={{color: '#FFF', textAlign: 'center', fontSize: 35, paddingTop: 10}}>
-            700.000
+            {this.props.total}
           </Text>
           <Text style={{color: '#FFF', textAlign: 'center', fontSize:10, paddingTop: 10}}>
             22 Dec. 2019
@@ -37,73 +38,25 @@ export default class Expenses extends React.Component  {
         <Text style={{color: '#FFF', textAlign: 'center', fontSize: 20, paddingTop: 10}}>
           LISTA DE GASTOS
         </Text>
-        <CardItem  style={{height: 60, borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
-          <Left>
-              <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name="car" />
-              <Body>
-                <Text style={{color: '#f3f3f3'}}>Automovil</Text>
-                <Text style={{color: '#f3f3f3', fontSize:10}}>22 Dec. 2019</Text>
-              </Body>
-            </Left>
-            <Right>
-              <Text style={{color: '#f3f3f3'}}>-$323.000</Text>
-            </Right>
-          </CardItem>
-
-          <CardItem  style={{height: 60, borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
-            <Left>
-              <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name="home" />
-              <Body>
-                <Text style={{color: '#f3f3f3'}}>Alquiler</Text>
-                <Text style={{color: '#f3f3f3', fontSize:10}}>22 Dec. 2019</Text>
-              </Body>
-            </Left>
-            <Right>
-                <Text style={{color: '#f3f3f3'}}>-$400.000</Text>
-            </Right>
-          </CardItem>
-
-          <CardItem  style={{height: 60,borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
-          <Left>
-            <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name="car" />
-            <Body>
-              <Text style={{color: '#f3f3f3'}}>Combustible</Text>
-              <Text style={{color: '#f3f3f3', fontSize:10}}>22 Dec. 2019</Text>
-            </Body>
-          </Left>
-          <Right>
-              <Text style={{color: '#f3f3f3'}}>-$80.000</Text>
-          </Right>
-
-          </CardItem>
-
-          <CardItem  style={{height: 60,borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
-          <Left>
-            <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name="car" />
-            <Body>
-              <Text style={{color: '#f3f3f3'}}>Combustible</Text>
-              <Text style={{color: '#f3f3f3', fontSize:10}}>22 Dec. 2019</Text>
-            </Body>
-          </Left>
-          <Right>
-              <Text style={{color: '#f3f3f3'}}>-$80.000</Text>
-          </Right>
-
-          </CardItem>
-          <CardItem  style={{height: 60,borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
-          <Left>
-            <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name="car" />
-            <Body>
-              <Text style={{color: '#f3f3f3'}}>Combustible</Text>
-              <Text style={{color: '#f3f3f3', fontSize:10}}>22 Dec. 2019</Text>
-            </Body>
-          </Left>
-          <Right>
-              <Text style={{color: '#f3f3f3'}}>-$80.000</Text>
-          </Right>
-
-          </CardItem>
-
+        {this.props.expensesByUser.map(({name, note,icon, value}, i)=>{
+            return<CardItem  key={i} style={{height: 60, borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
+              <Left>
+                  <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name={icon} />
+                  <Body>
+                    <View>
+                      <Text style={{color: '#f3f3f3'}}>{name}</Text>
+                      <Text style={{color: '#f3f3f3', fontSize:10}}>{note}</Text>
+                    </View>
+                  </Body>
+                </Left>
+                <Right>
+                  <View>
+                    <Text style={{color: '#f3f3f3'}}>{`-${value}`}</Text>
+                  </View>
+                </Right>
+            </CardItem>
+          })
+        }
       </Content>
        <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#F35A81',position: 'absolute',bottom: 70,right: 20}}  onPress={() => alert("This is Card Header")}>
          <Icon type="FontAwesome5" name="plus" />

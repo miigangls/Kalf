@@ -1,4 +1,4 @@
-const router= (state = {name: '', options: {}}, action) => {
+const router= (state = {name: 'expenses', options: {}}, action) => {
   switch (action.type) {
     case 'ROUTE-UPDATE': return { name: action.route, options: action.options || {} }
     default: return state
