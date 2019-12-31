@@ -8,7 +8,7 @@ import {route} from '../../actions/route'
 import Footer from '../reusables/footer'
 
 import Input from '../components/input';
-
+import Picker  from '../reusables/pickerExpenses'
 
 class Formexpenses extends React.Component {
   state = {formValid: false}
@@ -16,9 +16,13 @@ class Formexpenses extends React.Component {
     let {formValid} = this.state;
     return (
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
-        <Card style={{ borderRadius:8, height: 150 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
-          <Input style={Styles.register.Input} placeholder="Valor" getInput={(value, valid) => this.getField('valor', value, valid)}/>
-          <Input style={Styles.register.Input} placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
+        <Card style={{ borderRadius:8, height: 300 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
+          <Picker   getInput={(value, valid) => this.getField('expenses', value, valid)} />
+          <Input style={{...Styles.register.Input, height: 50}} placeholder="Valor" getInput={(value, valid) => this.getField('valor', value, valid)}/>
+          <Input style={{...Styles.register.Input, height: 50}} placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
+          <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}}>
+            <Text style={{ color: '#15243e'}}> AGREGAR </Text>
+          </Button>
         </Card>
       </Content>
     );
