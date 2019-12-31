@@ -62,9 +62,7 @@ export default class Expenses extends React.Component  {
            transparent={false}
            visible={this.state.modalVisible}
            style={{height: 100}}
-           onRequestClose={() => {
-             Alert.alert('Modal has been closed.');
-           }}>
+           onRequestClose={() => this.setModalVisible(!this.state.modalVisible)}>
            <Container>
            <Header style={Styles.main.header}>
              <Left>
