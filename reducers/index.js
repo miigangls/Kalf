@@ -4,12 +4,16 @@ import router from './router'
 import user from './user'
 import ready from './ready'
 import profile from './profile'
+import expenses  from './expense'
+import income from './income'
 
 const appReducer = combineReducers({
   router,
   user,
   ready,
-  profile
+  profile,
+  expenses,
+  income
 })
 
 const rootReducer = (state, action) => {
