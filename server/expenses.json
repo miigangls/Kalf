@@ -1,18 +1,18 @@
 {
-  "casa":[
+  "casa": [
     "Alquiler",
     "Reparación",
     "Muebles/Electrodomésticos" ,
     "Triturador de basura",
     "Otros"
   ],
-  "gasto en médicos":[
+  "gasto en médicos": [
     "Gasto en médicos",
     "Medicamentos",
     "Dentista",
     "Otros"
   ],
-  "transporte":[
+  "transporte": [
     "Combustible",
     "Transporte urbano/taxis",
     "Reparación",
@@ -20,27 +20,27 @@
     "Lavado de coches",
     "Otros"
   ],
-  "ropa y calzado":[
+  "ropa y calzado": [
     "Ropa de adultos",
     "Ropa de niños",
     "Accesorios",
     "Calzado",
     "Otros",
   ],
-  "seguros":[
+  "seguros": [
     "Seguro de vida",
     "Seguro de salud",
     "Seguro de coche",
     "Otros",
   ],
-  "higiene":[
+  "higiene": [
     "Cosmética/accesorios",
     "Peluquería",
     "Salón de belleza",
     "Productos de limpieza",
     "Otros",
   ],
-  "diversión":[
+  "diversión": [
     "Cine/teatro",
     "Gimnasio/piscina",
     "Cursos/formación",
@@ -50,7 +50,7 @@
     "Libros",
     "Otros",
   ],
-  "otros gastos":[
+  "otros gastos": [
     "Gato/perro",
     "Vacaciones",
     "Veterinario",

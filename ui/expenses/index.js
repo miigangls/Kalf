@@ -5,34 +5,15 @@ import {login } from '../../actions/login'
 
 
 const mapStateToProps = (state) => {
-  let expensesByUser= [
-    {
-      value: '800000',
-      type: 'casa',
-      name: 'Alquiler',
-      note: 'asdfasdf',
-      icon:"home"
-    },
-    {
-      value: '60000',
-      type: 'transporte',
-      name: 'Combustible',
-      note: 'asdfasdf',
-      icon:"car"
-    },
-    {
-      value: '60000',
-      type: 'otros gastos',
-      name: 'Gato/perro',
-      note: 'asdfasdf',
-      icon:"dog"
-    }
-  ], total = 0
-  expensesByUser.forEach(({value})=>{
+  let {expenses} = state
+  , total = 0
+
+  expenses.forEach(({value})=>{
     total += parseFloat(value)
   })
+
   return {
-    expensesByUser,
+    expensesByUser: expenses,
     total
   }
 }

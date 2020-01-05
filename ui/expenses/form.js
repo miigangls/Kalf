@@ -19,7 +19,7 @@ class Formexpenses extends React.Component {
     return (
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
         <Card style={{ borderRadius:8, height: 300 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
-          <Picker   getInput={(value, valid) => this.getField('expenses', value, valid)} />
+          <Picker getInput={(value, valid) => this.getField('expenses', value, valid)} />
           <Input style={{...Styles.register.Input, height: 50}} placeholder="Valor" getInput={(value, valid) => this.getField('valor', value, valid)}/>
           <Input style={{...Styles.register.Input, height: 50}} placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
           <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}} onPress={() => this.props.onPress(this.state)}>
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     goBack:() => dispatch(route('expenses')),
-    onPress:()=> dispatch(add())
+    onPress:(state)=> dispatch(add(state))
  }
 }
 
