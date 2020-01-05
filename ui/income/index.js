@@ -5,12 +5,21 @@ import {login } from '../../actions/login'
 
 
 const mapStateToProps = (state) => {
-  return {  }
+  let {income} = state
+  , total = 0
+
+  income.forEach(({value})=>{
+    total += parseFloat(value)
+  })
+
+  return {
+    incomeByUser: income,
+    total
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: (email, password) => dispatch(login(email, password)),
-  linkRegister: () => dispatch(route('register'))
+  routeFrom:() => dispatch(route('income-from'))
 })
 
 export default connect(
