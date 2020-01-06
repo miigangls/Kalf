@@ -6,7 +6,10 @@ import Styles from '../../styles';
 import Footer from '../reusables/footer'
 import ExpensesForm from './form'
 export default class Expenses extends React.Component  {
-  state = { modalVisible: false,};
+  state = { modalVisible: false};
+  componentDidMount(){
+    this.props.loadData()
+  }
  render() {
    let {expensesByUser:[]} = this.props
     return (

@@ -10,7 +10,7 @@ import Footer from '../reusables/footer'
 
 import Input from '../components/input';
 import Picker  from '../reusables/pickerExpenses'
-import { add } from '../../actions/expense'
+import { addAndUpdate } from '../../actions/expense'
 
 class Formexpenses extends React.Component {
   state = {formValid: false}
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     goBack:() => dispatch(route('expenses')),
-    onPress:(state)=> dispatch(add(state))
+    onPress:(state)=> dispatch(addAndUpdate(state))
  }
 }
 
