@@ -1,4 +1,4 @@
-import {saveFile, getFileInfo, readFile} from '../utils/file';
+import {saveFile, getFileInfo, readFile, deleteFiles} from '../utils/file';
 import * as SecureStore from 'expo-secure-store';
 import {route } from './route'
 import {makeid, getTodayDate} from '../utils/ui';
@@ -12,7 +12,6 @@ export function loadData() {
       let memo = await readFile('expenses', `${moment().format('MMMM')}`)
       expenses = memo.data
     }
-    console.log(expenses);
     await dispatch({ type: 'CONFIGURATION-EXPENSE-GET', expenses})
   }
 }
@@ -24,7 +23,6 @@ export function addAndUpdate(expensesData) {
     , {expenses, notas, valor} = expensesData
     , date  =  getTodayDate()
     if (!FilesInfo.exists) {
-
       let expense = {
         _id: makeid(50),
         date: moment().format('DD-MM-YYYY'),
@@ -38,15 +36,28 @@ export function addAndUpdate(expensesData) {
         }],
       }
      await saveFile('expenses', `${moment().format('MMMM')}`, expense)
-
     } else {
-      console.log('update Files');
+      let memo = await readFile('expenses', `${moment().format('MMMM')}`)
+      await deleteFiles('expenses', `${moment().format('MMMM')}`)
+      memo.data.push({
+        value: valor,
+        name: expenses,
+        note: notas,
+        icon: 'home'
+      })
+      await saveFile('expenses', `${moment().format('MMMM')}`, memo)
     }
     let memo = await readFile('expenses', `${moment().format('MMMM')}`)
     await dispatch({ type: 'CONFIGURATION-EXPENSE-GET', expenses: memo.data})
+    await dispatch({ type: 'CONFIGURATION-EXPENSE-MODAL', modal: !true})
   }
 }
+//arr.splice(i, 1);
+export function Delete() {
 
-/*export function Delete() {
 
-}*/
+}
+
+export function setModalVisible(state) {
+  return (dispatch) => {dispatch({type: 'CONFIGURATION-EXPENSE-MODAL', modal: !state})}
+}

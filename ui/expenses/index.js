@@ -2,25 +2,27 @@ import Expenses from './expenses'
 import { connect } from 'react-redux'
 import {route} from '../../actions/route'
 import {login } from '../../actions/login'
-import {loadData} from '../../actions/expense'
+import {loadData, setModalVisible} from '../../actions/expense'
 
 const mapStateToProps = (state) => {
-  let {expenses} = state
+  let {data, modal} = state.expenses
   , total = 0
 
-  expenses.forEach(({value})=>{
+  data.forEach(({value})=>{
     total += parseFloat(value)
   })
 
   return {
-    expensesByUser: expenses,
-    total
+    expensesByUser: (data || []),
+    total,
+    modal
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   routeFrom:() => dispatch(route('expense-from')),
-  loadData:()=>  dispatch(loadData())
+  loadData:()=>  dispatch(loadData()),
+  setModalVisible:(state)=> dispatch(setModalVisible(state))
 })
 
 export default connect(

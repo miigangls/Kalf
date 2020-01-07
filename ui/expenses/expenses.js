@@ -63,13 +63,13 @@ export default class Expenses extends React.Component  {
         <Modal
            animationType="slide"
            transparent={false}
-           visible={this.state.modalVisible}
+           visible={this.props.modal}
            style={{height: 100}}
-           onRequestClose={() => this.setModalVisible(!this.state.modalVisible)}>
+           onRequestClose={() => this.props.setModalVisible(this.props.modal)}>
            <Container>
            <Header style={Styles.main.header}>
              <Left>
-               <Button vertical  onPress={() => this.setModalVisible(!this.state.modalVisible)}>
+               <Button  onPress={() => this.props.setModalVisible(this.props.modal)}>
                  <Icon type="FontAwesome5" name="arrow-left" />
                </Button>
              </Left>
@@ -78,11 +78,11 @@ export default class Expenses extends React.Component  {
              </Body>
              <Right/>
            </Header>
-             <ExpensesForm style={{marginTop: 22}}/>
+             <ExpensesForm style={{marginTop: 22}} />
            </Container>
          </Modal>
       </Content>
-       <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#F35A81',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.setModalVisible(true)}}>
+       <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#F35A81',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.props.setModalVisible(this.props.modal)}}>
          <Icon type="FontAwesome5" name="plus" />
        </Button>
 
@@ -91,6 +91,6 @@ export default class Expenses extends React.Component  {
     )
   }
   setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+    //this.setState({modalVisible: visible});
   }
 }

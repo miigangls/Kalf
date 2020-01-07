@@ -43,7 +43,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    goBack:() => dispatch(route('expenses')),
     onPress:(state)=> dispatch(addAndUpdate(state))
  }
 }

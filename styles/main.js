@@ -4,10 +4,7 @@
     display: 'flex',
   },
   headerBody: {
-      display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
+    display: 'flex',
     width: '100%'
   },
   footer: {
