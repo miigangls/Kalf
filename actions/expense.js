@@ -53,13 +53,15 @@ export function addAndUpdate(expensesData) {
   }
 }
 //arr.splice(i, 1);
-export function delete(value) {
-  let FilesInfo = await getFileInfo('expenses', `${moment().format('MMMM')}`)
-  if (FilesInfo.exists) {
-    let memo = await readFile('expenses', `${moment().format('MMMM')}`)
-    memo.data.forEach(({name}, i)=> {
-      if (name == value) memo.data.splice(i, 1);
-    })
+export function deleteExpenses(value) {
+  return  async (dispatch) => {
+    let FilesInfo = await getFileInfo('expenses', `${moment().format('MMMM')}`)
+    if (FilesInfo.exists) {
+      let memo = await readFile('expenses', `${moment().format('MMMM')}`)
+      memo.data.forEach(({name}, i)=> {
+        if (name == value) memo.data.splice(i, 1);
+      })
+    }
   }
 }
 
