@@ -42,22 +42,24 @@ export default class Expenses extends React.Component  {
           LISTA DE GASTOS
         </Text>
         {this.props.expensesByUser.map(({name, note,icon, value}, i)=>{
-            return<CardItem  key={i} style={{height: 60, borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
-              <Left>
-                  <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name={icon} />
-                  <Body>
+            return <TouchableHighlight  key={name + note + icon + value + i} onPress={() => {this.props.setModalVisible(this.props.modal)}}>
+              <CardItem  key={i} style={{height: 60, borderRadius:5, marginTop:10, backgroundColor: '#15243e', borderColor: '#15243e' }} onPress={() => alert("This is Card Header")}>
+                <Left>
+                    <Icon style={{color: '#15243e', fontSize:18, backgroundColor: '#fff', height: 40, width: 40, borderRadius:50, padding: 10}} type="FontAwesome5" name={icon} />
+                    <Body>
+                      <View>
+                        <Text style={{color: '#f3f3f3'}}>{name}</Text>
+                        <Text style={{color: '#f3f3f3', fontSize:10}}>{note}</Text>
+                      </View>
+                    </Body>
+                  </Left>
+                  <Right>
                     <View>
-                      <Text style={{color: '#f3f3f3'}}>{name}</Text>
-                      <Text style={{color: '#f3f3f3', fontSize:10}}>{note}</Text>
+                      <Text style={{color: '#f3f3f3'}}>{`-${value}`}</Text>
                     </View>
-                  </Body>
-                </Left>
-                <Right>
-                  <View>
-                    <Text style={{color: '#f3f3f3'}}>{`-${value}`}</Text>
-                  </View>
-                </Right>
-            </CardItem>
+                  </Right>
+              </CardItem>
+            </TouchableHighlight>
           })
         }
         <Modal

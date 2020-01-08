@@ -9,7 +9,7 @@ export default class AppPicker extends React.Component {
     , options = [<Picker.Item value='select' label="--select--" />]
     Object.keys(expenses).forEach((value, i) =>{
       expenses[value].forEach((name, j)=> {
-        options.push(<Picker.Item key={i+name} value={name} label={name} />)
+        options.push(<Picker.Item key={i+name+j} value={name} label={name} />)
       })
     })
     return (
