@@ -65,6 +65,14 @@ export function deleteExpenses(value) {
   }
 }
 
-export function setModalVisible(state) {
+export function onRequestClose(state) {
   return (dispatch) => {dispatch({type: 'CONFIGURATION-EXPENSE-MODAL', modal: !state})}
+}
+
+
+export function setModal(state, botton) {
+  return (dispatch) => {
+    dispatch({type: 'CONFIGURATION-EXPENSE-MODAL', modal: !state})
+    dispatch({type: 'CONFIGURATION-EXPENSE-FORM', form: botton})
+  }
 }
