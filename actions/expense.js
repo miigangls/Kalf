@@ -20,7 +20,7 @@ export function loadData() {
 export function addAndUpdate(expensesData) {
   return  async (dispatch) => {
     let FilesInfo = await getFileInfo('expenses', `${moment().format('MMMM')}`)
-    , {expenses, notas, valor} = expensesData
+    , {_id, expenses, notas, valor} = expensesData
     , date  =  getTodayDate()
     if (!FilesInfo.exists) {
       let expense = {
@@ -29,6 +29,7 @@ export function addAndUpdate(expensesData) {
         year: date.year,
         week: date.week,
         data: [{
+          _id: makeid(50),
           value: valor,
           name: expenses,
           note: notas,
@@ -39,7 +40,18 @@ export function addAndUpdate(expensesData) {
     } else {
       let memo = await readFile('expenses', `${moment().format('MMMM')}`)
       await deleteFiles('expenses', `${moment().format('MMMM')}`)
+      let validRow = memo.data.filter(row => {
+        let valid = false;
+        if(row._id == _id) valid = true
+        return valid
+      })
+      if(validRow) {
+        memo.data.forEach((row, i)=> {
+          if (row._id == _id) memo.data.splice(i, 1);
+        })
+      }
       memo.data.push({
+        _id: makeid(50),
         value: valor,
         name: expenses,
         note: notas,
@@ -58,9 +70,13 @@ export function deleteExpenses(value) {
     let FilesInfo = await getFileInfo('expenses', `${moment().format('MMMM')}`)
     if (FilesInfo.exists) {
       let memo = await readFile('expenses', `${moment().format('MMMM')}`)
-      memo.data.forEach(({name}, i)=> {
-        if (name == value) memo.data.splice(i, 1);
+      await deleteFiles('expenses', `${moment().format('MMMM')}`)
+      memo.data.forEach(({_id}, i)=> {
+        if (_id == value) memo.data.splice(i, 1);
       })
+      await saveFile('expenses', `${moment().format('MMMM')}`, memo)
+      await dispatch({ type: 'CONFIGURATION-EXPENSE-GET', expenses: memo.data})
+      await dispatch({ type: 'CONFIGURATION-EXPENSE-MODAL', modal: !true})
     }
   }
 }
