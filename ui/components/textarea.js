@@ -3,7 +3,12 @@ import { Item, Label, Textarea } from 'native-base';
 const re = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
 
 export default class AppInput extends React.Component {
-  state = { value: '' }
+  constructor(props) {
+    super()
+    this.state = {
+      value: (props.defaultValue || '').toString()
+    }
+  }
   render() {
     let { value } = this.state, {error, success} = this.props;
     return (

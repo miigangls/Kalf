@@ -2,7 +2,6 @@ import React from 'react';
 import { Item, Label, Picker } from 'native-base';
 
 export default class AppPicker extends React.Component {
-  state = { value: '' }
   render() {
     let { value } = this.state
     , {error, success, label} = this.props
