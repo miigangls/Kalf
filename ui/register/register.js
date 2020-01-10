@@ -45,8 +45,8 @@ export default class Register extends React.Component  {
   }
   getField(field, value, valid) {
     this.setState({[field]: value, [field+"Valid"]: valid}, () => {
-      let {emailValid, passwordValid} = this.state;
-      this.setState({formValid: emailValid && passwordValid})
+      let {name, last_name, email, password} = this.state;
+      this.setState({formValid: name && last_name && email && password})
     })
   }
 }
