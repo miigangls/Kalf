@@ -5,8 +5,9 @@ import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon
 import Styles from '../../styles';
 import Footer from '../reusables/footer'
 import ExpensesForm from './form'
+
 export default class Expenses extends React.Component  {
-  state = { modalVisible: false};
+  state = { };
   componentDidMount(){
     this.props.loadData()
   }
