@@ -5,7 +5,6 @@ import {makeid } from '../utils/ui';
 
 export function registrar(userData) {
   return  async (dispatch) => {
-    await  dispatch({ type: 'CONFIGURATION-PROFILE-LOADING', loading: true })
     let user = {
       _id: makeid(50),
       name: userData.name,
@@ -15,7 +14,7 @@ export function registrar(userData) {
     }
     await saveFile('configuration', 'profile', user)
     SecureStore.setItemAsync('profile_data', JSON.stringify(user))
-    await dispatch({ type: 'CONFIGURATION-PROFILE-SET', user })
     await dispatch(route(''))
+    await dispatch({ type: 'CONFIGURATION-PROFILE-SET', user })
   };
 }
