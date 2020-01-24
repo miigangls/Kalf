@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert } from 'react-native';
+import {Alert, View } from 'react-native';
 import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card} from 'native-base';
 import { connect } from 'react-redux'
 import Styles from '../../styles';
@@ -33,15 +33,17 @@ class Formexpenses extends React.Component {
           <InputNumeric style={{...Styles.register.Input, height: 50}} defaultValue={this.props.data.value} placeholder="Valor" getInput={(value, valid) => this.getField('valor',  value, valid)}/>
           <Textarea style={{...Styles.register.Input, height: 100, paddingTop:10}} defaultValue={this.props.data.note} placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
 
-          <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}} onPress={() => this.props.onPress(this.state)}>
-            <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}>{(this.props.form) ? `ACTUALIZAR` : `AGREGAR` }  </Text>
-          </Button>
+          <View style={{width: '100%', height: '30%', justifyContent: 'center', alignItems: 'center'}}>
+            <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}} onPress={() => this.props.onPress(this.state)}>
+              <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}>{(this.props.form) ? `ACTUALIZAR` : `AGREGAR` }  </Text>
+            </Button>
 
-          {(this.props.form) ?
-            <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5,  backgroundColor: '#f8d7da'}} onPress={() => this.props.onPressDelete(this.props.data._id)}>
-              <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}> ELIMINAR </Text>
-            </Button>: null
-          }
+            {(this.props.form) ?
+              <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5,  backgroundColor: '#f8d7da'}} onPress={() => this.props.onPressDelete(this.props.data._id)}>
+                <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}> ELIMINAR </Text>
+              </Button>: null
+            }
+          </View>
         </Card>
       </Content>
     );

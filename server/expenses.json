@@ -1,60 +1,85 @@
-{
-  "casa": [
-    "Alquiler",
-    "Reparación",
-    "Muebles/Electrodomésticos" ,
-    "Triturador de basura",
-    "Otros"
-  ],
-  "gasto en médicos": [
-    "Gasto en médicos",
-    "Medicamentos",
-    "Dentista",
-    "Otros"
-  ],
-  "transporte": [
-    "Combustible",
-    "Transporte urbano/taxis",
-    "Reparación",
-    "Servicio fluidos, neumáticos",
-    "Lavado de coches",
-    "Otros"
-  ],
-  "ropa y calzado": [
-    "Ropa de adultos",
-    "Ropa de niños",
-    "Accesorios",
-    "Calzado",
-    "Otros",
-  ],
-  "seguros": [
-    "Seguro de vida",
-    "Seguro de salud",
-    "Seguro de coche",
-    "Otros",
-  ],
-  "higiene": [
-    "Cosmética/accesorios",
-    "Peluquería",
-    "Salón de belleza",
-    "Productos de limpieza",
-    "Otros",
-  ],
-  "diversión": [
-    "Cine/teatro",
-    "Gimnasio/piscina",
-    "Cursos/formación",
-    "Pasatiempo",
-    "Equipos electrónicos",
-    "Prensa/revistas",
-    "Libros",
-    "Otros",
-  ],
-  "otros gastos": [
-    "Gato/perro",
-    "Vacaciones",
-    "Veterinario",
-    "Caridad",
-    "Otros",
-  ]
-}
+[
+  {
+    "name": "casa" ,
+    "data": [
+      "Alquiler",
+      "Reparación",
+      "Muebles/Electrodomésticos" ,
+      "Triturador de basura",
+      "Otros"
+    ]
+  },
+  {
+    "name": "gasto en médicos" ,
+    "data": [
+      "Gasto en médicos",
+      "Medicamentos",
+      "Dentista",
+      "Otros"
+    ]
+  },
+  {
+    "name": "transporte" ,
+    "data": [
+      "Combustible",
+      "Transporte urbano/taxis",
+      "Reparación",
+      "Servicio fluidos, neumáticos",
+      "Lavado de coches",
+      "Otros"
+    ]
+  },
+  {
+    "name": "ropa y calzado" ,
+    "data": [
+      "Ropa de adultos",
+      "Ropa de niños",
+      "Accesorios",
+      "Calzado",
+      "Otros",
+    ]
+  },
+  {
+    "name": "seguros" ,
+    "data": [
+      "Seguro de vida",
+      "Seguro de salud",
+      "Seguro de coche",
+      "Otros",
+    ]
+  },
+  {
+    "name": "higiene" ,
+    "data":[
+      "Cosmética/accesorios",
+      "Peluquería",
+      "Salón de belleza",
+      "Productos de limpieza",
+      "Otros",
+    ]
+  },
+  {
+    "name": "diversión" ,
+    "data": [
+      "Cine/teatro",
+      "Gimnasio/piscina",
+      "Cursos/formación",
+      "Pasatiempo",
+      "Equipos electrónicos",
+      "Prensa/revistas",
+      "Libros",
+      "Otros",
+    ]
+  },
+  {
+    "name": "otros gastos" ,
+    "data": [
+      "Gato/perro",
+      "Vacaciones",
+      "Veterinario",
+      "Caridad",
+      "Otros",
+    ]
+  },
+
+]

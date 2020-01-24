@@ -1,5 +1,14 @@
-{
-  "0":"Depósito",
-  "1":"Sueldo",
-  "2": "Ahorros",
-}
+[
+  {
+    "name":"Sueldo",
+    "desciption": ""
+  },
+  {
+    "name":"Dividendos",
+    "desciption":""
+  },
+  {
+    "name":"Interés",
+    "desciption":""
+  }
+]
