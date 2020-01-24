@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, View } from 'react-native';
+import {Alert, View, TouchableHighlight } from 'react-native';
 import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card} from 'native-base';
 import { connect } from 'react-redux'
 import Styles from '../../styles';
@@ -28,23 +28,35 @@ class Formexpenses extends React.Component {
     let {formValid} = this.state
     return (
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
-        <Card style={{ borderRadius:8, height: (this.props.form) ? 420 : 370 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
-          <Picker style={{...Styles.register.Input, height: 50}} defaultValue={this.props.data.name} getInput={(value, valid) => this.getField('expenses', value, valid)} />
-          <InputNumeric style={{...Styles.register.Input, height: 50}} defaultValue={this.props.data.value} placeholder="Valor" getInput={(value, valid) => this.getField('valor',  value, valid)}/>
-          <Textarea style={{...Styles.register.Input, height: 100, paddingTop:10}} defaultValue={this.props.data.note} placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
-
-          <View style={{width: '100%', height: '30%', justifyContent: 'center', alignItems: 'center'}}>
-            <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}} onPress={() => this.props.onPress(this.state)}>
-              <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}>{(this.props.form) ? `ACTUALIZAR` : `AGREGAR` }  </Text>
-            </Button>
-
-            {(this.props.form) ?
-              <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5,  backgroundColor: '#f8d7da'}} onPress={() => this.props.onPressDelete(this.props.data._id)}>
-                <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}> ELIMINAR </Text>
-              </Button>: null
-            }
+      <View style={{flex: 1, flexDirection: 'row',  marginTop: 10}}>
+            <TouchableHighlight  style={{ borderRadius:8, height: 180, width: 180 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+              <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
+              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+              <Text style={{color: 'white',  paddingTop: 20 }}>Tarjeta</Text>
+              <Text style={{color: 'white' }}>Creadito</Text>
+              </View>
+            </TouchableHighlight>
+            <TouchableHighlight  style={{marginLeft: 10, borderRadius:8, height: 180 ,  width: 180 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+              <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
+              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+              <Text style={{color: 'white',  paddingTop: 20  }}>Prestamos</Text>
+              </View>
+            </TouchableHighlight>
           </View>
-        </Card>
+          <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
+            <TouchableHighlight  style={{ borderRadius:8, height: 180, width: 180 ,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+              <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
+                <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+                <Text style={{color: 'white',  paddingTop: 20  }}>Familia</Text>
+              </View>
+            </TouchableHighlight>
+            <TouchableHighlight  style={{marginLeft: 10, borderRadius:8, height:180 , width: 180 ,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+              <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
+              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+              <Text style={{color: 'white',  paddingTop: 20  }}>Otros Gastos</Text>
+              </View>
+            </TouchableHighlight>
+          </View>
       </Content>
     );
   }
