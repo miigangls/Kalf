@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {AppState,  View, TouchableHighlight, Modal, Alert } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
+import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem, Footer } from 'native-base';
 
 import Styles from '../../styles';
-import Footer from '../reusables/footer'
-import ExpensesForm from './form'
+import Menu from '../reusables/footer'
+import ExpensesForm from './expensesForm'
 
 export default class Expenses extends React.Component  {
   state = { };
@@ -75,24 +75,29 @@ export default class Expenses extends React.Component  {
            onRequestClose={() => this.props.onRequestClose(this.props.modal)}>
            <Container>
            <Header style={Styles.main.header}>
-             <Left>
-               <TouchableHighlight  onPress={() => this.props.onRequestClose(this.props.modal)}>
-                 <Icon style={{color: '#FFF'}} type="FontAwesome5" name="arrow-left" />
-               </TouchableHighlight>
-             </Left>
+             <Left />
              <Body style={Styles.main.headerBody}>
-               <Title>KALF</Title>
+               <Title>TIPO DE GASTO</Title>
              </Body>
              <Right/>
            </Header>
              <ExpensesForm style={{marginTop: 22}} data={this.state}/>
            </Container>
+           <Footer style={Styles.main.header}>
+             <Left style={Styles.main.footer}>
+               <TouchableHighlight  onPress={() => this.props.onRequestClose(this.props.modal)}>
+                 <Icon style={{color: '#FFF'}} type="FontAwesome5" name="arrow-left" />
+               </TouchableHighlight>
+             </Left>
+             <Body style={Styles.main.headerBody} />
+             <Right/>
+           </Footer>
          </Modal>
       </Content>
        <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#2d4e86',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.props.setModalVisible(this.props.modal, false)}}>
          <Icon type="FontAwesome5" name="plus" />
        </Button>
-       <Footer />
+       <Menu />
       </Container>
     )
   }

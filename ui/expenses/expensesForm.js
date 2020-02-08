@@ -29,30 +29,30 @@ class Formexpenses extends React.Component {
     return (
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
       <View style={{flex: 1, flexDirection: 'row',  marginTop: 10}}>
-            <TouchableHighlight  style={{ borderRadius:8, height: 180, width: 180 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+            <TouchableHighlight onPress={() => this.props.onRouter('expensen-creati-card')} style={{ borderRadius:8, height: 180, width: 180 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
               <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
-              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome5" name='cc-mastercard'/>
               <Text style={{color: 'white',  paddingTop: 20 }}>Tarjeta</Text>
               <Text style={{color: 'white' }}>Creadito</Text>
               </View>
             </TouchableHighlight>
-            <TouchableHighlight  style={{marginLeft: 10, borderRadius:8, height: 180 ,  width: 180 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+            <TouchableHighlight onPress={() => this.props.onRouter('expense-loans')}  style={{marginLeft: 10, borderRadius:8, height: 180 ,  width: 180 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
               <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
-              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome5" name='money-check-alt'/>
               <Text style={{color: 'white',  paddingTop: 20  }}>Prestamos</Text>
               </View>
             </TouchableHighlight>
           </View>
           <View style={{flex: 1, flexDirection: 'row', marginTop: 10}}>
-            <TouchableHighlight  style={{ borderRadius:8, height: 180, width: 180 ,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+            <TouchableHighlight  onPress={() => this.props.onRouter('expense-family')} style={{ borderRadius:8, height: 180, width: 180 ,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
               <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
-                <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+                <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome5" name='user-friends'/>
                 <Text style={{color: 'white',  paddingTop: 20  }}>Familia</Text>
               </View>
             </TouchableHighlight>
-            <TouchableHighlight  style={{marginLeft: 10, borderRadius:8, height:180 , width: 180 ,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
+            <TouchableHighlight onPress={() => this.props.onRouter('expensen-others')}  style={{marginLeft: 10, borderRadius:8, height:180 , width: 180 ,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 30 }} >
               <View style={ {display: 'flex',  alignItems: 'center',  justifyContent: 'center'}} >
-              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome" name='upload'/>
+              <Icon style={{color: 'white', fontSize: 60}} type="FontAwesome5" name='align-justify'/>
               <Text style={{color: 'white',  paddingTop: 20  }}>Otros Gastos</Text>
               </View>
             </TouchableHighlight>
@@ -76,7 +76,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onPress:(state)=> dispatch(addAndUpdate(state)),
-    onPressDelete: (value)=> dispatch(deleteExpenses(value))
+    onPressDelete: (value)=> dispatch(deleteExpenses(value)),
+    onRouter:(value)=>{dispatch(route(value))}
  }
 }
 
