@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import {AppState,  View } from 'react-native';
-import { Container, Content,Header, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
+import { Container, Content, Left, Body, Right, Title, Button, Text, Spinner, Icon } from 'native-base';
 
 import Styles from '../styles'
 import Login from './login'
 import Register from './register'
 import Income from './income'
 import Expenses from './expenses'
-import CreditCards from './expenses/creditCards'
+import CreditCards from './configuration/TCards/'
+import Type from './configuration/type'
 import Footer from './reusables/footer'
+import Header from './reusables/header'
 
 export default class Main extends React.Component  {
   state = {loading: true}
@@ -19,7 +21,11 @@ export default class Main extends React.Component  {
       'register' : Register,
       'income': Income,
       'expenses': Expenses,
-      'expensen-creati-card': CreditCards,
+      
+      'confi': Type,
+      'confi-credit-card': CreditCards,
+      'confi-credit-card-form': CreditCards,
+
     }
     props.appStartUp(() => this.setState({loading: false}))
   }
@@ -45,18 +51,8 @@ export default class Main extends React.Component  {
   getHome() {
     return (
       <Container>
-        <Header style={Styles.main.header}>
-          <Left/>
-          <Body style={Styles.main.headerBody}>
-            <Title>KALF</Title>
-          </Body>
-          <Right>
-            <Button vertical>
-              <Icon type="FontAwesome5" name="bars" />
-            </Button>
-          </Right>
-        </Header>
-        <Content contentContainerStyle={{display: 'flex', flex: 1}}>
+        <Header  title="BALANCE GENERAL"/>
+        <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
         </Content>
         <Footer />
       </Container>

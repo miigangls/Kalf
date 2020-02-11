@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {AppState,  View, TouchableHighlight, Modal, Alert } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
+import { Container, Content,  Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
 
 import Footer from '../reusables/footer'
+import Header from '../reusables/header'
+
 import Styles from '../../styles';
 import IncomeForm from './form'
 
@@ -18,17 +20,7 @@ export default class Income extends React.Component  {
   render() {
     return (
       <Container>
-        <Header style={Styles.main.header}>
-          <Left/>
-          <Body style={Styles.main.headerBody}>
-            <Title >KALF</Title>
-          </Body>
-          <Right>
-            <Button vertical>
-              <Icon type="FontAwesome5" name="bars" />
-            </Button>
-          </Right>
-        </Header>
+        <Header title="INGRESOS" />
         <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
         <Card style={{ borderRadius:8, height: 150 , backgroundColor: '#203860', borderColor: '#203860', paddingTop: 20 }}>
             <Text style={{color: '#FFF', textAlign: 'center', fontSize: 20,}}>
