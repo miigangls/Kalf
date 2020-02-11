@@ -51,7 +51,7 @@ export default class Expenses extends React.Component  {
           </View>
         </Card>
       </Content>
-       <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#2d4e86',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.props.setModalVisible(this.props.modal, false)}}>
+       <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#2d4e86',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.props.onRoute('confi-credit-card-form')}}>
          <Icon type="FontAwesome5" name="plus" />
        </Button>
        <Menu />

@@ -7,7 +7,10 @@ import Login from './login'
 import Register from './register'
 import Income from './income'
 import Expenses from './expenses'
+
 import CreditCards from './configuration/TCards/'
+import CreditCardsForm from './configuration/TCards/form'
+
 import Type from './configuration/type'
 import Footer from './reusables/footer'
 import Header from './reusables/header'
@@ -21,10 +24,10 @@ export default class Main extends React.Component  {
       'register' : Register,
       'income': Income,
       'expenses': Expenses,
-      
+
       'confi': Type,
       'confi-credit-card': CreditCards,
-      'confi-credit-card-form': CreditCards,
+      'confi-credit-card-form': CreditCardsForm,
 
     }
     props.appStartUp(() => this.setState({loading: false}))

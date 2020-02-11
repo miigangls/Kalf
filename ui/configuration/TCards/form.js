@@ -28,8 +28,8 @@ class FormCreditCards extends React.Component {
     return (
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
         <Card style={{ borderRadius:8, height: (this.props.form) ? 420 : 370 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
-          <InputNumeric style={{...Styles.register.Input, height: 50}} defaultValue={this.props.data.value} placeholder="Valor" getInput={(value, valid) => this.getField('valor',  value, valid)}/>
-          <Textarea style={{...Styles.register.Input, height: 100, paddingTop:10}} defaultValue={this.props.data.note} placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
+          <InputNumeric style={{...Styles.register.Input, height: 50}} placeholder="Valor" getInput={(value, valid) => this.getField('valor',  value, valid)}/>
+          <Textarea style={{...Styles.register.Input, height: 100, paddingTop:10}}  placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
 
           <View style={{width: '100%', height: '30%', justifyContent: 'center', alignItems: 'center'}}>
             <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}} onPress={() => this.props.onPress(this.state)}>
@@ -69,4 +69,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Formexpenses)
+)(FormCreditCards)

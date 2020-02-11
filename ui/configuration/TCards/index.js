@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch => ({
   routeFrom:() => dispatch(route('expense-from')),
   loadData:()=>  dispatch(loadData()),
   onRequestClose: (state)=> dispatch(onRequestClose(state)),
-  setModalVisible:(state, botton)=> dispatch(setModal(state, botton))
+  setModalVisible:(state, botton)=> dispatch(setModal(state, botton)),
+  onRoute: (value) => dispatch(route(value))
 })
 
 export default connect(
