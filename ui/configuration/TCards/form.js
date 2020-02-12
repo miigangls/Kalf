@@ -1,16 +1,20 @@
 import React from 'react';
 import {Alert, View } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card} from 'native-base';
+import { Container, Content, Left, Body, Right, Title, Button, Text,Icon, Card} from 'native-base';
+
 import { connect } from 'react-redux'
 import Styles from '../../../styles';
 
 import {route} from '../../../actions/route'
 
 import Footer from '../../reusables/footer'
+import Header from  '../../reusables/header'
 
 import InputNumeric from '../../components/numeric';
 import Textarea from '../../components/textarea';
-import Picker  from '../../reusables/pickerExpenses'
+import PickerBanks  from '../../reusables/pickerBanks';
+import PickerTCards from '../components/typeCards'
+import DatePicker from '../components/datePicker'
 
 class FormCreditCards extends React.Component {
   constructor(props) {
@@ -26,24 +30,41 @@ class FormCreditCards extends React.Component {
   render() {
     let {formValid} = this.state
     return (
+      <Container>
+      <Header  title="T. CREDITO" />
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
-        <Card style={{ borderRadius:8, height: (this.props.form) ? 420 : 370 , backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
-          <InputNumeric style={{...Styles.register.Input, height: 50}} placeholder="Valor" getInput={(value, valid) => this.getField('valor',  value, valid)}/>
-          <Textarea style={{...Styles.register.Input, height: 100, paddingTop:10}}  placeholder="Notas" getInput={(value, valid) => this.getField('notas', value, valid)}/>
+        <Card style={{ borderRadius:8,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 20 }}>
+        <DatePicker
+        defaultDate={new Date(2018, 4, 4)}
+        minimumDate={new Date(2018, 1, 1)}
+        maximumDate={new Date(2018, 12, 31)}
+        locale={"es"}
+        timeZoneOffsetInMinutes={undefined}
+        modalTransparent={false}
+        animationType={"fade"}
+        androidMode={"default"}
+        placeHolderText="Fecha de Vencimiento"
+        textStyle={{ color: "#FFF" }}
+        placeHolderTextStyle={{ color: "#FFF" }}
+        disabled={false}
+         style={{...Styles.register.Input, height: 100, paddingTop:10}} getInput={(value, valid) => this.getField('dateEnd', value, valid)}/>
+          <PickerBanks style={{...Styles.register.Input, height: 50}}  getInput={(value, valid) => this.getField('banks', value, valid)} />
+          <PickerTCards style={{...Styles.register.Input, height: 50}}  getInput={(value, valid) => this.getField('type', value, valid)} />
+
+          <InputNumeric style={{...Styles.register.Input, height: 50}} placeholder="Numero T. Credito " getInput={(value, valid) => this.getField('number',  value, valid)}/>
+
+          <InputNumeric style={{...Styles.register.Input, height: 50}} placeholder="Cupo" getInput={(value, valid) => this.getField('cupo',  value, valid)}/>
 
           <View style={{width: '100%', height: '30%', justifyContent: 'center', alignItems: 'center'}}>
-            <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5}} onPress={() => this.props.onPress(this.state)}>
-              <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}>{(this.props.form) ? `ACTUALIZAR` : `AGREGAR` }  </Text>
+            <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5, marginBotton: 10, marginLeft: 10}} onPress={() => this.props.onPress(this.state)}>
+              <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}>{`AGREGAR` }  </Text>
             </Button>
-
-            {(this.props.form) ?
-              <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 5,  backgroundColor: '#f8d7da'}} onPress={() => this.props.onPressDelete(this.props.data._id)}>
-                <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}> ELIMINAR </Text>
-              </Button>: null
-            }
           </View>
         </Card>
       </Content>
+      <Footer />
+      </Container>
+
     );
   }
   getField(field, value, valid) {

@@ -12,6 +12,7 @@ export default class AppPicker extends React.Component {
   render() {
     let { value } = this.state
     , {error, success, label} = this.props
+    , options = [<Picker.Item key="0" value='select' label="--select--" />]
     income.forEach(({name}, i) =>{
       options.push(<Picker.Item key={i+name} value={name} label={name} />)
     })

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {AppState,  View, TouchableHighlight, Modal, Alert } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem, Footer } from 'native-base';
+import { Container, Content, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
 
 import Styles from '../../../styles';
-import Menu from '../../reusables/footer'
+import Footer from '../../reusables/footer'
+import Header from '../../reusables/header'
 
 export default class Expenses extends React.Component  {
   state = { };
@@ -18,17 +19,7 @@ export default class Expenses extends React.Component  {
    let {expensesByUser:[]} = this.props
     return (
       <Container>
-      <Header style={Styles.main.header}>
-        <Left/>
-        <Body style={Styles.main.headerBody}>
-          <Title style={{color: '#FFF', marginLeft: 10}}>T. DE CREDITO</Title>
-        </Body>
-        <Right>
-          <Button vertical>
-            <Icon type="FontAwesome5" name="bars" />
-          </Button>
-        </Right>
-      </Header>
+      <Header  title="T. CREDITO" />
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
         <Card style={{ borderRadius:8, height: 210 , backgroundColor: '#FFF', borderColor: '#FFF', padding: 30, marginTop: 15 }}>
           <View style={{width: '100%', flex: 1,  flexDirection: 'row', paddingTop: 0}} >
@@ -54,7 +45,7 @@ export default class Expenses extends React.Component  {
        <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#2d4e86',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.props.onRoute('confi-credit-card-form')}}>
          <Icon type="FontAwesome5" name="plus" />
        </Button>
-       <Menu />
+       <Footer />
       </Container>
     )
   }
