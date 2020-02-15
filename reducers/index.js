@@ -6,6 +6,7 @@ import ready from './ready'
 import profile from './profile'
 import expenses  from './expense'
 import income from './income'
+import tCards from './tCards'
 
 const appReducer = combineReducers({
   router,
@@ -13,7 +14,8 @@ const appReducer = combineReducers({
   ready,
   profile,
   expenses,
-  income
+  income,
+  tCards
 })
 
 const rootReducer = (state, action) => {

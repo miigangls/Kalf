@@ -1,5 +1,7 @@
 import React from 'react';
 import { Item, Label, Picker } from 'native-base';
+import {View }  from 'react-native'
+
 
 const TYPES  = [`Diners Club`, `American Express`, `Visa`, `Mastercard`]
 
@@ -18,14 +20,16 @@ export default class AppPicker extends React.Component {
       options.push(<Picker.Item key={name} value={name} label={name} />)
     })
     return (
-      <Picker
-        note
-        mode="dropdown"
-        style={this.props.style}
-        selectedValue={value}
-        onValueChange={this.setValue}>
-        {options}
-      </Picker>
+      <View style={this.props.style}>
+        <Picker
+          note
+          mode="dropdown"
+          style={{color: '#FFF'}}
+          selectedValue={value}
+          onValueChange={this.setValue}>
+          {options}
+        </Picker>
+      </View>
     );
   }
   setValue = (value) => {
