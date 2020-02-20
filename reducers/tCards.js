@@ -1,12 +1,14 @@
 let defaultState = {
   data: [],
+  form: {}
 }
-const expense = (state = defaultState, action) => {
+const tCards = (state = defaultState, action) => {
   switch (action.type) {
-    case 'CONFIGURATION-TCARDS-GET': return Object.assign({}, state, {data: action.expenses})
+    case 'CONFIGURATION-TCARDS-GET': return Object.assign({}, state, {data: action.data})
+    case 'CONFIGURATION-TCARDS-FORM': return Object.assign({}, state, {form: action.form})
     case 'CONFIGURATION-TCARDS-REMOVE': return {}
     default: return state
   }
 }
 
-export default expense
+export default tCards

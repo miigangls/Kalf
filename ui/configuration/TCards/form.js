@@ -13,6 +13,7 @@ import Footer from '../../reusables/footer'
 import Header from  '../../reusables/header'
 
 import InputNumeric from '../../components/numeric';
+import InputNumericCard from '../components/inputTCard'
 import Textarea from '../../components/textarea';
 import PickerBanks  from '../../reusables/pickerBanks';
 import PickerTCards from '../components/typeCards'
@@ -37,9 +38,9 @@ class FormCreditCards extends React.Component {
       <Header  title="T. CREDITO" />
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
         <Card style={{ borderRadius:8,  backgroundColor: '#15243e', borderColor: '#15243e', padding: 20, paddingBotton: 10}}>
-          <PickerBanks style={{...Styles.register.Input, height: 50}}  getInput={(value, valid) => this.getField('banks', value, valid)} />
+          <PickerBanks style={{...Styles.register.Input, height: 50}} defaultValue={this.props.data.bank}   getInput={(value, valid) => this.getField('bank', value, valid)} />
           <PickerTCards style={{...Styles.register.Input, height: 50}}  getInput={(value, valid) => this.getField('type', value, valid)} />
-          <InputNumeric style={{...Styles.register.Input, height: 50}} placeholder="Numero T. Credito " getInput={(value, valid) => this.getField('number',  value, valid)}/>
+          <InputNumericCard style={{...Styles.register.Input, height: 50}} placeholder="Numero T. Credito " getInput={(value, valid) => this.getField('number',  value, valid)}/>
           <InputNumeric style={{...Styles.register.Input, height: 50}} placeholder="Cupo" getInput={(value, valid) => this.getField('cupo',  value, valid)}/>
           <Button light style={{height: 50,textAlign: 'center', width: 280, marginTop: 10, marginBotton: 10, marginLeft:22}} onPress={() => this.props.onPress(this.state)}>
             <Text style={{ color: '#15243e', textAlign: 'center', width: 280}}>{`AGREGAR` }  </Text>
@@ -52,15 +53,15 @@ class FormCreditCards extends React.Component {
   }
   getField(field, value, valid) {
     this.setState({[field]: value, [field+"Valid"]: valid}, () => {
-      let {expenses, valor, notas} = this.state;
-      this.setState({formValid: expenses && valor && notas})
+      let { bank, type, number, cupo} = this.state;
+      this.setState({formValid: bank && type && number && cupo})
     })
   }
 }
 
 const mapStateToProps = (state) => {
-  let {form} = state.expenses
-  return { form }
+  let {form} = state.tCards
+  return { data: form }
 }
 
 const mapDispatchToProps = (dispatch) => {

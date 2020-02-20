@@ -2,28 +2,21 @@ import CreditCard from './creditCard'
 import { connect } from 'react-redux'
 import {route} from '../../../actions/route'
 import {login } from '../../../actions/login'
-import {loadData, setModal, onRequestClose} from '../../../actions/expense'
+import {loadData, updateData} from '../../../actions/tCards'
 
 const mapStateToProps = (state) => {
-  let {data, modal} = state.expenses
-  , total = 0
-
-  data.forEach(({value})=>{
-    total += parseFloat(value)
-  })
+  let {data} = state.tCards
+  , {name,  last_name} = state.profile
 
   return {
-    expensesByUser: (data || []),
-    total,
-    modal
+    tCards: (data || []),
+    name: name
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  routeFrom:() => dispatch(route('expense-from')),
   loadData:()=>  dispatch(loadData()),
-  onRequestClose: (state)=> dispatch(onRequestClose(state)),
-  setModalVisible:(state, botton)=> dispatch(setModal(state, botton)),
+  updateData: (state)=>dispatch(updateData(state)),
   onRoute: (value) => dispatch(route(value))
 })
 
