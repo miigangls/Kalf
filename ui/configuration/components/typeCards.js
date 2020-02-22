@@ -3,7 +3,19 @@ import { Item, Label, Picker } from 'native-base';
 import {View }  from 'react-native'
 
 
-const TYPES  = [`Diners Club`, `American Express`, `Visa`, `Mastercard`]
+const TYPES  = [{
+  value: "cc-discover",
+  name: "Diners Club"
+},{
+  value: "cc-amex",
+  name: "American Express"
+} , {
+  value: "cc-visa",
+  name: "Visa"
+}, {
+  value: "cc-mastercard",
+  name: "Mastercard"
+}]
 
 export default class AppPicker extends React.Component {
   constructor(props) {
@@ -16,8 +28,8 @@ export default class AppPicker extends React.Component {
     let { value } = this.state
     , {error, success, label} = this.props
     , options = [<Picker.Item key="0" value='select' label="--select--" />]
-    TYPES.forEach(name =>{
-      options.push(<Picker.Item key={name} value={name} label={name} />)
+    TYPES.forEach(({name, value}, i) =>{
+      options.push(<Picker.Item key={value} value={value} label={name} />)
     })
     return (
       <View style={this.props.style}>

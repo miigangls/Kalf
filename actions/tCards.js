@@ -12,7 +12,6 @@ export function loadData() {
       let memo = await readFile('configuration', `tcards`)
       tCards = memo
     }
-    console.log(tCards);
     await dispatch({ type: 'CONFIGURATION-TCARDS-GET', data: tCards})
   }
 }
@@ -58,11 +57,13 @@ export function addAndUpdate(values) {
       await saveFile('configuration', `tcards`, memo)
     }
     let memo = await readFile('configuration', `tcards`)
+
+    await dispatch({ type: 'ROUTE-UPDATE', route: 'confi-credit-card'})
     await dispatch({ type: 'CONFIGURATION-TCARDS-GET', data: memo})
   }
 }
 //arr.splice(i, 1);
-export function deleteExpenses(value) {
+export function deleteTCards(value) {
   return  async (dispatch) => {
     let FilesInfo = await getFileInfo('configuration', `tcards`)
     if (FilesInfo.exists) {
@@ -72,13 +73,14 @@ export function deleteExpenses(value) {
         if (_id == value) memo.splice(i, 1);
       })
       await saveFile('configuration', `tcards`, memo)
+      await dispatch({ type: 'ROUTE-UPDATE', route: 'confi-credit-card'})
       await dispatch({ type: 'CONFIGURATION-TCARDS-GET', data: memo})
     }
   }
 }
 
-export function updateData(form) {
+export function updateData(state) {
   return (dispatch) => {
-    dispatch({type: 'CONFIGURATION-TCARDS-FORM', form})
+    dispatch({type: 'CONFIGURATION-TCARDS-FORM', form: state})
   }
 }

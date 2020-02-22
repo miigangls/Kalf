@@ -13,10 +13,8 @@ export default class Expenses extends React.Component  {
     this.props.loadData()
   }
   updateData(_id, bank, type, number, cupo) {
-    this.setState({_id, bank, type, number, cupo})
-  console.log(this.state);
-    this.props.updateData(this.state)
     this.props.onRoute('confi-credit-card-form')
+    this.props.updateData({_id,  bank: bank.id , type, number, cupo})
   }
  render() {
    let {tCards:[]} = this.props
@@ -30,7 +28,7 @@ export default class Expenses extends React.Component  {
             return <TouchableHighlight key={_id} onPress={() => this.updateData(_id, bank, type, number, cupo)} >
               <Card style={{ borderRadius:8, height: 210 , backgroundColor: '#FFF', borderColor: '#FFF', padding: 30, marginTop: 15 }}>
                 <View style={{width: '100%', flex: 1,  flexDirection: 'row', paddingTop: 0}} >
-                  <Icon style={{color: '#203860', textAlign: 'left', fontSize:40, width: 90}} type="FontAwesome5" name="cc-visa" />
+                  <Icon style={{color: '#203860', textAlign: 'left', fontSize:40, width: 90}} type="FontAwesome5" name={type} />
                   <Text style={{color: '#203860', textAlign: 'right', fontSize: 18, paddingTop: 10, textTransform: 'uppercase'}}>
                   {bank.name}
                   </Text>

@@ -7,10 +7,10 @@ import {loadData, updateData} from '../../../actions/tCards'
 const mapStateToProps = (state) => {
   let {data} = state.tCards
   , {name,  last_name} = state.profile
-
+  console.log(state.profile);
   return {
     tCards: (data || []),
-    name: name
+    name: `${name} ${last_name}`
   }
 }
 
