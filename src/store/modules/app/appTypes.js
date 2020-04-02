@@ -1,0 +1,6 @@
+export const LOAD_DATA_START = 'LOAD_DATA_START';
+export const LOAD_DATA_SUCCESS = 'LOAD_DATA_SUCCESS';
+export const LOAD_DATA_ERROR = 'LOAD_DATA_ERROR';
+export const SET_CURRENT_MONTH = 'SET_CURRENT_MONTH';
+export const SET_ACTIVE_TAB = 'SET_ACTIVE_TAB';
+export const SET_USER_NAME = 'SET_USER_NAME';
