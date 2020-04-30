@@ -8,16 +8,16 @@ export const setPayments = (items) => ({ type: SET_PAYMENTS, payload: items });
 export const addPayment = (payload) => async (dispatch, getState) => {
   const item = { ...payload, id: generateId('payment'), createdAt: now(), updatedAt: now() };
   dispatch({ type: ADD_PAYMENT, payload: item });
-  await persistState(getState);
+  await persistState(getState, dispatch);
   return item;
 };
 
 export const updatePayment = (id, changes) => async (dispatch, getState) => {
   dispatch({ type: UPDATE_PAYMENT, payload: { id, changes: { ...changes, updatedAt: now() } } });
-  await persistState(getState);
+  await persistState(getState, dispatch);
 };
 
 export const deletePayment = (id) => async (dispatch, getState) => {
   dispatch({ type: DELETE_PAYMENT, payload: id });
-  await persistState(getState);
+  await persistState(getState, dispatch);
 };

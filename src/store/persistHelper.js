@@ -1,28 +1,37 @@
 import * as storageService from '../services/storageService';
 
+export const buildMonthData = (state) => ({
+  incomes: state.incomes.items,
+  payments: state.payments.items,
+  expenses: state.expenses.items,
+  savings: state.savings.items,
+  debts: state.debts.items,
+  transactions: state.transactions.items,
+});
+
+export const buildSettings = (state) => ({
+  currency: state.app.currency,
+  currentMonth: state.app.currentMonth,
+  userName: state.app.userName,
+});
+
 export const buildDataFromState = (state) => {
   const key = state.app.currentMonth;
   const cache = state.app.monthsCache || {};
-  const currentMonthData = {
-    incomes: state.incomes.items,
-    payments: state.payments.items,
-    expenses: state.expenses.items,
-    savings: state.savings.items,
-    debts: state.debts.items,
-    transactions: state.transactions.items,
-  };
   return {
-    settings: {
-      currency: state.app.currency,
-      currentMonth: state.app.currentMonth,
-      userName: state.app.userName,
-    },
-    months: { ...cache, [key]: currentMonthData },
+    settings: buildSettings(state),
+    months: { ...cache, [key]: buildMonthData(state) },
   };
 };
 
-export const persistState = (getState, dispatch) => {
-  const data = buildDataFromState(getState());
-  if (dispatch) dispatch({ type: 'SET_MONTHS_CACHE', payload: data.months });
-  return storageService.saveData(data);
+export const persistState = async (getState, dispatch) => {
+  const state = getState();
+  const key = state.app.currentMonth;
+  const monthData = buildMonthData(state);
+  if (dispatch) {
+    const cache = state.app.monthsCache || {};
+    dispatch({ type: 'SET_MONTHS_CACHE', payload: { ...cache, [key]: monthData } });
+  }
+  await storageService.saveSettings(buildSettings(state));
+  return storageService.saveMonth(key, monthData);
 };

@@ -113,29 +113,35 @@ npm run web        # Lanza versión web (limitada por NativeBase v2)
 
 ## 💾 Estructura de datos
 
-Archivo persistido: `${FileSystem.documentDirectory}finance-data.json`
+Carpeta persistida: `${FileSystem.documentDirectory}finance-data/`
 
+```
+finance-data/
+  settings.json
+  2020-01.json
+  2020-02.json
+  2020-03.json
+  ...
+```
+
+`settings.json`:
+```json
+{ "currency": "COP", "currentMonth": "2020-01", "userName": "Miguel" }
+```
+
+`2020-01.json` (un archivo por mes):
 ```json
 {
-  "settings": {
-    "currency": "COP",
-    "currentMonth": "2020-01",
-    "userName": "Miguel"
-  },
-  "months": {
-    "2020-01": {
-      "incomes": [],
-      "payments": [],
-      "expenses": [],
-      "savings": [],
-      "debts": [],
-      "transactions": []
-    }
-  }
+  "incomes": [],
+  "payments": [],
+  "expenses": [],
+  "savings": [],
+  "debts": [],
+  "transactions": []
 }
 ```
 
-Cada acción de mutación (add/update/delete) llama a `persistState()` (en `src/store/persistHelper.js`) que reconstruye el JSON fusionando `state.app.monthsCache` con el mes actual y lo escribe completo en disco.
+Cada mutación llama a `persistState()` (en `src/store/persistHelper.js`) que escribe SOLO el archivo del mes activo y `settings.json`, manteniendo los demás meses intactos en disco.
 
 ### Entidades
 
