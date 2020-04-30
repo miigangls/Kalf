@@ -1,4 +1,4 @@
-# Finance Planner — Expo SDK 35 (estilo 2020)
+# Finance Planner — Expo SDK 35
 
 Aplicación móvil de finanzas personales inspirada en una plantilla mensual tipo Excel ("Planeador financiero GRATU"). Permite manejar ingresos, pagos programados, gastos, ahorros, deudas, transacciones y visualizar reportes y un calendario financiero, con persistencia local en archivos JSON.
 
