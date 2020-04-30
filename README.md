@@ -1,8 +1,6 @@
 # Finance Planner — Expo SDK 35
 
-Aplicación móvil de finanzas personales inspirada en una plantilla mensual tipo Excel ("Planeador financiero GRATU"). Permite manejar ingresos, pagos programados, gastos, ahorros, deudas, transacciones y visualizar reportes y un calendario financiero, con persistencia local en archivos JSON.
-
-> **Stack 2020 a propósito.** Este proyecto usa Expo SDK 35, React 16.8.3, NativeBase v2, Redux + redux-thunk y JavaScript puro (sin TypeScript) para mantener compatibilidad con el ecosistema de la época.
+Aplicación móvil de finanzas personales. Permite manejar ingresos, pagos programados, gastos, ahorros, deudas, transacciones y visualizar reportes y un calendario financiero, con persistencia local en archivos JSON.
 
 ---
 
