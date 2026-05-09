@@ -10,15 +10,15 @@ class MainFooter extends React.Component {
       <Footer >
         <FooterTab style={Styles.main.footer} >
          <Button vertical onPress={() => this.props.expense()}>
-           <Icon type="FontAwesome5" name="money-check-alt"  />
+           <Icon style={{color: '#FFF'}} type="FontAwesome5"  name="money-check-alt"  />
            <Text>Gastos</Text>
          </Button>
          <Button vertical onPress={() => this.props.home()}>
-           <Icon type="FontAwesome5" name="home" />
+           <Icon style={{color: '#FFF'}} type="FontAwesome5" name="home" />
            <Text>Inicio</Text>
          </Button>
          <Button vertical>
-           <Icon type="FontAwesome5" name="money-check" onPress={() => this.props.income()} />
+           <Icon  style={{color: '#FFF'}} type="FontAwesome5" name="money-check" onPress={() => this.props.income()} />
            <Text>Ingresos</Text>
          </Button>
        </FooterTab>
@@ -36,6 +36,7 @@ const mapDispatchToProps = (dispatch) => {
     home:() => dispatch(route('dashbord')),
     expense:() => dispatch(route('expenses')),
     income:() => dispatch(route('income')),
+
   }
 }
 

@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     home:() => dispatch(route('dashbord')),
     expense:() => dispatch(route('expenses')),
     income:() => dispatch(route('income')),
+    onRouter:(value)=>dispatch(route(value)),
   }
 }
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {AppState,  View, TouchableHighlight, Modal, Alert } from 'react-native';
-import { Container, Content, Header, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
+import {AppState,  View, TouchableHighlight, Alert } from 'react-native';
+import { Container, Content, Left, Body, Right, Title, Button, Text,Icon, Card, CardItem } from 'native-base';
 
 import Styles from '../../styles';
 import Footer from '../reusables/footer'
-import ExpensesForm from './form'
+import Header from '../reusables/header'
 
 export default class Expenses extends React.Component  {
   state = { };
@@ -19,29 +19,26 @@ export default class Expenses extends React.Component  {
    let {expensesByUser:[]} = this.props
     return (
       <Container>
-      <Header style={Styles.main.header}>
-        <Left/>
-        <Body style={Styles.main.headerBody}>
-          <Text style={{color: '#FFF', textAlign: 'center'}}>KALF</Text>
-        </Body>
-        <Right>
-          <Button vertical>
-            <Icon type="FontAwesome5" name="bars" />
-          </Button>
-        </Right>
-      </Header>
+      <Header title="GASTOS" />
       <Content style={{display: 'flex',backgroundColor:'#1a2d4d', paddingLeft: 20, paddingRight: 20}}>
-
-        <Card style={{ borderRadius:8, height: 150 , backgroundColor: '#203860', borderColor: '#203860', paddingTop: 20 }}>
-          <Text style={{color: '#FFF', textAlign: 'center', fontSize: 20,}}>
-          TOTAL DE GASTOS
+        <Card style={{ borderRadius:8, height: 230 , backgroundColor: '#FFF', borderColor: '#FFF', padding: 30, marginTop: 15 }}>
+          <View style={{width: '100%', flex: 1,  flexDirection: 'row', paddingTop: 0, height: 30}} >
+            <Icon style={{color: '#203860', textAlign: 'left', fontSize:40, width: 100}} type="FontAwesome5" name="money-check-alt" />
+            <Text style={{color: '#203860', textAlign: 'right', fontSize: 18, paddingTop: 10}}>
+              TOTAL DE GASTOS
+            </Text>
+          </View>
+          <Text style={{color: '#203860', textAlign: 'center', fontSize: 30, paddingTop: 20}}>
+          {this.props.total}
           </Text>
-          <Text style={{color: '#FFF', textAlign: 'center', fontSize: 35, paddingTop: 10}}>
-            {this.props.total}
-          </Text>
-          <Text style={{color: '#FFF', textAlign: 'center', fontSize:10, paddingTop: 10}}>
-            22 Dec. 2019
-          </Text>
+          <View style={{width: '100%', flex: 1,  flexDirection: 'row', paddingTop: 20}} >
+            <Text style={{color: '#203860', textAlign: 'left', fontSize:15,  width: 180}}>
+              ULTIMO GASTO
+            </Text>
+            <Text style={{color: '#203860', textAlign: 'right', fontSize:15, width: 100}}>
+              22 Dic. 2019
+            </Text>
+          </View>
         </Card>
         <Text style={{color: '#FFF', textAlign: 'center', fontSize: 20, paddingTop: 10}}>
           LISTA DE GASTOS
@@ -67,27 +64,6 @@ export default class Expenses extends React.Component  {
             </TouchableHighlight>
           })
         }
-        <Modal
-           animationType="slide"
-           transparent={false}
-           visible={this.props.modal}
-           style={{height: 100}}
-           onRequestClose={() => this.props.onRequestClose(this.props.modal)}>
-           <Container>
-           <Header style={Styles.main.header}>
-             <Left>
-               <TouchableHighlight  onPress={() => this.props.onRequestClose(this.props.modal)}>
-                 <Icon style={{color: '#FFF'}} type="FontAwesome5" name="arrow-left" />
-               </TouchableHighlight>
-             </Left>
-             <Body style={Styles.main.headerBody}>
-               <Title>KALF</Title>
-             </Body>
-             <Right/>
-           </Header>
-             <ExpensesForm style={{marginTop: 22}} data={this.state}/>
-           </Container>
-         </Modal>
       </Content>
        <Button style={{paddingLeft: 5 ,width: 60,height: 60,borderRadius: 30,backgroundColor:'#2d4e86',position: 'absolute',bottom: 70,right: 20}}  onPress={() => {this.props.setModalVisible(this.props.modal, false)}}>
          <Icon type="FontAwesome5" name="plus" />
